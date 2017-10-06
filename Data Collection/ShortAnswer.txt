@@ -1,0 +1,72 @@
+Enter your responses inline below and push this file to your private GitHub
+repository.
+
+
+1. Assume I plan to use the friend_overlap function above to quantify the
+similarity of two users. E.g., because 344 is larger than 1, I conclude that
+Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald
+Trump.
+
+How is this approach misleading? How might you fix it?
+
+
+Ans 1 - Friends_overlap function will tell just the number of friends which two person has in common.
+This can be misleading in our case because by numbers, 
+Hillary Clinton and Donald Trump have just 1 common friends which tells that both are not related much 
+but in fact they are the ones who have strong political co-relation.
+We can fix it by knowing the complete information through figuring out their friend's friends and then 
+running friend_overlap function to see how many of them are common.
+
+
+
+
+
+2. Looking at the output of your followed_by_hillary_and_donald function, why
+do you think this user is followed by both Hilary Clinton and Donald Trump,
+who are rivals? Do some web searches to see if you can find out more
+information.
+
+Ans 2 - Output was WhiteHouse.
+This user is the official twitter account for the white house which is a official residence and workplace
+ of the President of the United States. 
+In recent presidential election Hillary Clinton and Donald trump were the rivals.
+
+
+
+
+
+
+
+3. There is a big difference in how many accounts each candidate follows (Gary
+Johnson follows over 3K accounts, while Donald Trump follows less than
+50). Why do you think this is? How might that affect our analysis?
+
+Ans 3 - Donald Trump is the president of USA and Gary Johnson was Governor. 
+The following and whom a person follow on twitter may vary based on position and status of person. 
+Behavior and nature of work also are major factors. 
+Due to huge difference of data in numbers predicting actual information about individual is difficult through network graph. 
+We cannot do comprehensive analysis by comparing both.
+
+
+
+
+
+
+
+4. The follower graph we've collected is incomplete. To expand it, we would
+have to also collect the list of accounts followed by each of the
+friends. That is, for each user X that Donald Trump follows, we would have to
+also collect all the users that X follows. Assuming we again use the API call
+https://dev.twitter.com/rest/reference/get/friends/ids, how many requests will
+we have to make? Given how Twitter does rate limiting
+(https://dev.twitter.com/rest/public/rate-limiting), approximately how many
+minutes will it take to collect this data?
+
+Ans 4 - - There are two initial buckets available for GET requests: 15 calls every 15 minutes, and 180 calls every 15 minutes.
+
+So consider if trump follows ‘x’ users, so we have to make x calls to get the complete information.
+
+But due to rate limit the approximatly time taken will be 
+~ (ceil(x/15)-1)*15
+
+For example if trump has 45 friends than (ceil(45/15)-1)*15 ~ 30minutes 
